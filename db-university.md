@@ -83,3 +83,44 @@
     DELETE FROM `university`.`students`
     WHERE `name` = "Federico" AND `surname` = "Bellezza" and `date_of_birth` = "2001-04-21"
 ```
+
+# Query con GROUP
+
+1. Contare quanti iscritti ci sono stati ogni anno
+
+```
+    SELECT YEAR(`enrolment_date`) AS `enrolment_year`,
+    COUNT(`id`) AS `enrolment_number`
+    FROM `university`.`students`
+    GROUP BY YEAR(`enrolment_date`)
+```
+
+2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
+```
+    SELECT
+    	`office_address`,
+    	COUNT(`id`) AS `number_of_offices`
+    FROM `university`.`teachers`
+    GROUP BY `office_address`
+```
+
+3. Calcolare la media dei voti di ogni appello d'esame
+
+```
+    SELECT
+    	AVG(`vote`) AS `avg-vote`,
+        `exam_id`
+    FROM `university`.`exam_student`
+    GROUP BY `exam_id`
+```
+
+4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+```
+    SELECT
+    	COUNT(`id`) AS `courses_number`,
+        `department_id`
+    FROM university.degrees
+    GROUP BY `department_id`
+```
