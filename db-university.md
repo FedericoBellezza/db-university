@@ -196,7 +196,7 @@
 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 
 ```
-    SELECT
+    SELECT DISTINCT
         `degrees`.`department_id`,
         `departments`.`name`,
         `teachers`.`id` AS `teacher_id`,
